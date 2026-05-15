@@ -1,0 +1,410 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #f5f2ec;
+  color: #171717;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+}
+
+.page {
+  width: min(1440px, calc(100% - 64px));
+  margin: 0 auto;
+  padding: 56px 0 32px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 28px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.16);
+}
+
+.brand {
+  display: flex;
+  align-items: baseline;
+  gap: 36px;
+}
+
+.logo {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 26px;
+  letter-spacing: -0.04em;
+  position: relative;
+}
+
+.logo::after {
+  content: "";
+  position: absolute;
+  left: 18px;
+  right: 4px;
+  bottom: 1px;
+  height: 2px;
+  background: #c85f28;
+}
+
+.brand span {
+  font-size: 15px;
+  font-weight: 400;
+  color: #555;
+}
+
+nav {
+  display: flex;
+  gap: 48px;
+}
+
+nav a {
+  color: #111;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+nav a:hover {
+  color: #c85f28;
+}
+
+.hero {
+  padding: 52px 0 58px;
+}
+
+.hero h2 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(26px, 3.6vw, 42px);
+  line-height: 1.25;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+.hero p {
+  margin: 18px 0 0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #666;
+}
+
+.sample-item {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr 1.35fr;
+  align-items: start;
+  gap: 56px;
+  padding: 26px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.samples {
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.sample-meta {
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  column-gap: 8px;
+}
+
+.sample-id {
+  font-size: 13px;
+  color: #222;
+}
+
+.sample-meta h3 {
+  margin: 0 0 16px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.sample-meta p {
+  grid-column: 2;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #333;
+}
+
+.label {
+  margin-bottom: 12px;
+  font-size: 12px;
+  color: #555;
+}
+
+.sample-lyrics {
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.sample-lyrics::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 12px;
+  bottom: 18px;
+  height: 54px;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(245, 242, 236, 0),
+    #f5f2ec 74%,
+    #f5f2ec 100%
+  );
+}
+
+.sample-lyrics-expanded::after {
+  display: none;
+}
+
+.lyrics-text {
+  flex-shrink: 0;
+  max-height: var(--lyrics-collapsed-height);
+  margin: 0 0 10px;
+  padding-right: 12px;
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+  white-space: pre-line;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #222;
+  transition: max-height 260ms ease;
+}
+
+.sample-lyrics-expanded .lyrics-text {
+  max-height: var(--lyrics-expanded-height);
+  overflow-y: hidden;
+}
+
+.text-button {
+  margin-top: auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font-size: 12px;
+  color: #555;
+  cursor: pointer;
+}
+
+.text-button:hover {
+  color: #c85f28;
+}
+
+.audio-player {
+  display: grid;
+  grid-template-columns: 44px 1fr auto;
+  align-self: center;
+  align-items: center;
+  gap: 18px;
+}
+
+.sample-item-expanded .audio-player {
+  align-self: start;
+}
+
+.play-button {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.35);
+  background: transparent;
+  cursor: pointer;
+  font-size: 14px;
+  color: #111;
+}
+
+.play-button:hover {
+  border-color: #c85f28;
+  color: #c85f28;
+}
+
+.waveform {
+  height: 52px;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: rgba(17, 17, 17, 0.32);
+  cursor: pointer;
+}
+
+.waveform span {
+  flex: 1 1 0;
+  min-width: 2px;
+  background: currentColor;
+  display: block;
+  border-radius: 2px;
+  transition:
+    background-color 140ms ease,
+    height 180ms ease;
+}
+
+.waveform span.active {
+  color: #111;
+}
+
+.waveform:hover span {
+  color: rgba(200, 95, 40, 0.4);
+}
+
+.waveform:hover span.active {
+  color: #c85f28;
+}
+
+.time {
+  font-size: 12px;
+  color: #555;
+  white-space: nowrap;
+}
+
+footer {
+  padding-top: 42px;
+  text-align: center;
+  font-size: 12px;
+  color: #777;
+}
+
+@media (max-width: 900px) {
+  .page {
+    width: min(100% - 32px, 720px);
+    padding: 28px 0 28px;
+  }
+
+  .topbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px;
+    padding-bottom: 22px;
+  }
+
+  .brand {
+    justify-content: space-between;
+    gap: 18px;
+  }
+
+  nav {
+    gap: 22px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .hero {
+    padding: 34px 0 36px;
+  }
+
+  .hero h2 {
+    font-size: clamp(24px, 8vw, 34px);
+    line-height: 1.18;
+  }
+
+  .hero p {
+    margin-top: 14px;
+  }
+
+  .sample-item {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 24px 0;
+  }
+
+  .sample-meta {
+    grid-template-columns: 40px 1fr;
+  }
+
+  .sample-meta h3 {
+    margin-bottom: 12px;
+  }
+
+  .sample-lyrics {
+    align-self: auto;
+    margin-left: 48px;
+  }
+
+  .lyrics-text {
+    max-height: 220px;
+  }
+
+  .sample-lyrics-expanded .lyrics-text {
+    max-height: var(--lyrics-expanded-height);
+  }
+
+  .text-button {
+    margin-top: 2px;
+  }
+
+  .audio-player {
+    grid-template-columns: 40px minmax(0, 1fr) auto;
+    gap: 10px;
+    margin-left: 48px;
+  }
+
+  .play-button {
+    width: 40px;
+    height: 40px;
+  }
+
+  .waveform {
+    min-width: 0;
+    height: 44px;
+    gap: 1px;
+  }
+
+  .waveform span {
+    min-width: 1px;
+  }
+
+  .time {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 520px) {
+  .page {
+    width: min(100% - 24px, 480px);
+  }
+
+  .brand {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .brand span {
+    font-size: 13px;
+  }
+
+  nav {
+    gap: 16px;
+  }
+
+  .sample-meta {
+    grid-template-columns: 32px 1fr;
+  }
+
+  .sample-lyrics,
+  .audio-player {
+    margin-left: 40px;
+  }
+
+  .sample-id,
+  nav a,
+  .hero p,
+  .sample-meta p,
+  .lyrics-text {
+    font-size: 13px;
+  }
+
+  .audio-player {
+    grid-template-columns: 40px minmax(0, 1fr);
+  }
+
+  .time {
+    grid-column: 2;
+    justify-self: end;
+  }
+}
