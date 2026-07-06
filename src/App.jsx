@@ -299,13 +299,13 @@ export default function App() {
     <main className="page">
       <header className="topbar">
         <div className="brand">
-          <div className="logo">Khala</div>
+          <div className="logo">Shao</div>
           <span>Research Demo</span>
         </div>
 
         <nav>
           <a href="https://arxiv.org/abs/2605.01790">Paper</a>
-          <a href="https://github.com/Khala-Music-AI/Khala">GitHub</a>
+          <a href="https://github.com/Shao-Music-AI/Shao">GitHub</a>
           <a href="https://huggingface.co/liujiafeng/Khala-MusicGeneration-v1.0">
             Model
           </a>
@@ -332,7 +332,7 @@ export default function App() {
         ))}
       </div>
 
-      <footer>© 2026 Khala Team</footer>
+      <footer>© 2026 Shao Team</footer>
     </main>
   );
 }
