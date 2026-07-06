@@ -306,7 +306,7 @@ export default function App() {
         <nav>
           <a href="https://arxiv.org/abs/2605.01790">Paper</a>
           <a href="https://github.com/Shao-Music-AI/Shao">GitHub</a>
-          <a href="https://huggingface.co/liujiafeng/Khala-MusicGeneration-v1.0">
+          <a href="https://huggingface.co/liujiafeng/Shao-MusicGeneration-v1.0">
             Model
           </a>
         </nav>
